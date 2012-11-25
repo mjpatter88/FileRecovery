@@ -24,7 +24,7 @@ I know one type is plain text, so now I need to figure out if the remaining two 
 First program:
 Read through each of the blocks looking for identifying criteria.
 Plain text - look for a block with all values in the printable range.
-Word -
-Pdf -
-Jpg -
+Word - doc file: hex "D0 CF 11 E0" docx file: hex "50 4B"
+Pdf - hex "25 50 44 46"
+Jpg - start: hex "FF D8" end: hex "FF D9"
 Print out which types of files were found and which blocks contained the identifiable data.
