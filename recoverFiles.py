@@ -1,8 +1,9 @@
 #!/c/Python32/python
 
+import string
+
 # Four lists of blocks
 unclassBlocks = []
-plainTextBlocks = []
 jpegBlocks = []
 pdfBlocks = []
 wordBlocks = []
@@ -55,18 +56,37 @@ def first_pass():
 			pdfBlocks.append(block)
 			toRemove.append(block)
 
-		# JPEG files
+		# JPEG files (header)
 		elif data[0] == int("0xFF", 16) and data[1] == int("0xD8", 16):
 			jpegBlocks.append(block)
 			toRemove.append(block)
-			# TODO: also check for jpg footer?
+
+		# JPEG files (footer)
+		elif data[510] == int("0xFF", 16) and data[511] == int("0xD9", 16):
+			jpegBlocks.append(block)
+			toRemove.append(block)
 
 		# If no sig is found, see if all bytes are within ascii printable range
-		# use string.printable
-		
+		# This is a text block from a word file
+		text = True
+		for byte in data:
+			if string.printable.find(chr(byte)) == -1 \
+			   and byte != int("0x92", 16) and byte != int("0x93", 16) \
+			   and byte != int("0x97", 16):
+				# hex 92 is word's single quote, hex 93 is word's double quote
+				# hex 97 is word's hyphen
+				text = False
+				print("{:X}".format(int(byte)))
+				break
+		if text:
+			print(block)
+			wordBlocks.append(block)
+			toRemove.append(block)
 		file.close()
 	
 	# remove newly classified blocks
+	for block in toRemove:
+		unclassBlocks.remove(block)
 
 	print("Pass 1 complete.")
 	return
@@ -85,9 +105,6 @@ def calc_entropy():
 def print_status():
 	print("STATUS: ")
 	print("There are {0} unclassified blocks.".format(len(unclassBlocks)))
-	print("There are {0} plain text blocks.".format(len(plainTextBlocks)))
-	if len(plainTextBlocks) > 0:
-		print(plainTextBlocks)
 	print("There are {0} pdf blocks.".format(len(pdfBlocks)))
 	if len(pdfBlocks) > 0:
 		print(pdfBlocks)

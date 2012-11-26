@@ -19,7 +19,9 @@ Basic steps:
 What I actually did:
 First I opened about 10 of the blocks in a hex editor just to get an idea of what they looked like. What I immediately noticed was that one of the three types appeared to be plain text. I emailed the professor about this and he confirmed my thoughts.
 
-I know one type is plain text, so now I need to figure out if the remaining two types are jpg, pdf, or word. I could email the professor about this also, but I'm guessing I can just start writing the toolkit to look for something specific to each of those files.
+I know one type is plain text, so now I need to figure out if the remaining two types are jpg, pdf, or word. Or there could be another option, where the other three types are all included so there are really 4 types of files involved. I emailed the professor and TA this quesiton but they didn't reply, so I'm just going to write a function that tries to identify the headers of each file by the given type's magic numbers, and then see what I find.
+
+I looked up the magic numbers online at http://en.wikipedia.org/wiki/Magic_number_(programming) and found what I needed. Obviously the plain text file doesn't have a magic number, so I'm hoping to identify that by the fact that all bytes will be legal ascii characters in the printable range.
 
 First program:
 Read through each of the blocks looking for identifying criteria.
@@ -28,3 +30,9 @@ Word - doc file: hex "D0 CF 11 E0" docx file: hex "50 4B"
 Pdf - hex "25 50 44 46"
 Jpg - start: hex "FF D8" end: hex "FF D9"
 Print out which types of files were found and which blocks contained the identifiable data.
+
+I did this and what I found was interesting. I found headers from all three file types, and then I also found several plain text blocks, or so I thought. However, one block that I knew should be plain text "BLOCK0002" was not getting identified as such. After a little debugging, I realized the culprit was a single-quote that was hex 92. This isn't an ascii character, but instead a different single quote character that word uses. This made me think that what I was identifying as plain text documents might really just be blocks of text from a word file. My previous program informed me that the word documents were of the ".doc" variety, so I opened one of those up in the hex editor and sure enough the text portion appeared like plain text. My current assumption now is that there are only 3 types of files, so maybe the professor's reply to my email was actually wrong?
+
+My plan is to expand my search for "plain text" files to include the characters for both the different single quote and also double quote marks that word uses, and then classify these blocks as word files. Then I'll continue on with the entropy analysis that I was originally planning on using.
+
+
