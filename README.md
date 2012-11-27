@@ -35,4 +35,11 @@ I did this and what I found was interesting. I found headers from all three file
 
 My plan is to expand my search for "plain text" files to include the characters for both the different single quote and also double quote marks that word uses, and then classify these blocks as word files. Then I'll continue on with the entropy analysis that I was originally planning on using.
 
+I'm first manually finding all the obvious text files so I can verify that I'm identifying them all correctly. As i've been manually looking them over I've been wondering if I can identify all the word blocks by looking for certain signatures. If the entropy analysis doesn't work I may look over the 2003 word format spec to see if each chunk can be identified.
+
+After a little poking around online I found this resource:
+http://msdn.microsoft.com/en-us/library/cc313105(v=office.12).aspx
+which includes a specification for the word file format. I think I will try using this to take out all the word blocks and possibly order them correctly.
+
+
 
