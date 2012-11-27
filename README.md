@@ -39,7 +39,19 @@ I'm first manually finding all the obvious text files so I can verify that I'm i
 
 After a little poking around online I found this resource:
 http://msdn.microsoft.com/en-us/library/cc313105(v=office.12).aspx
-which includes a specification for the word file format. I think I will try using this to take out all the word blocks and possibly order them correctly.
+and this one which is simpler and might have all the needed info:
+www.openoffice.org/sc/compdocfileformat.pdf
+These include a specification for the word file format. I think I will try using this to take out all the word blocks and possibly order them correctly.
+
+Info about word .doc files:
+Always start with hex: D0 CF 11 E0 A1 B1 1A E1
+
+After looking over the documentation, word format is extremely complex and not even helpful in this instance. The documents describe how to visually create a word document from a given file, but now how to identify certain bits of the file. I may refer back to this in the future, but for now I'm going to have to continue on the previous track.
+
+TODO: Problem: The end of pdfs gets detected as plain text. I think I'll have to detect these by looking for the specific pattern... otherwise they'll either be identified as plain text or the entropy will show them as plain text as well.
+
+Maybe I can manually look at a few pdfs and a few docs and look for specific magic patterns... hmmm...
+
 
 
 

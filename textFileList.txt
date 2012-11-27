@@ -1,9 +1,15 @@
+Problem: some of these are really the end of pdf files?
+
 0002
 0006
 0009
 0017
 0018
 0024
+0025 (maybe)
+0030 (maybe)
+0034 (maybe)
+0043 (maybe)
 0048
 0054
 0056
@@ -24,6 +30,7 @@
 0141
 0144
 0146
+0150 (maybe)
 0155
 0162
 0166 (ends with zeros)
@@ -42,7 +49,7 @@
 0216
 0217
 0220
-0221 (maybe)
+0221 (maybe) (not detected, maybe look for "D o c u m e n t" sig?
 0223
 0226
 0233 (maybe)
@@ -56,6 +63,7 @@
 0288
 0292
 0296 (maybe)
+
 0303
 0311
 0317
@@ -86,6 +94,5 @@
 
 
 
-Done through
-
+Done through 400
 

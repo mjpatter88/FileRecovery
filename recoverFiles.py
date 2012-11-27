@@ -41,7 +41,9 @@ def first_pass():
 		# Looks for file signatures in blocks (header/footer)
 		# WORD files (.doc)
 		if data[0] == int("0xD0", 16) and data[1] == int("0xCF", 16) \
-		   and data[2] == int("0x11", 16) and data[3] == int("0xE0", 16):
+		   and data[2] == int("0x11", 16) and data[3] == int("0xE0", 16) \
+		   and data[4] == int("0xA1", 16) and data[5] == int("0xB1", 16) \
+		   and data[6] == int("0x1A", 16) and data[7] == int("E1", 16):
 			wordBlocks.append(block)
 			toRemove.append(block)
 		
@@ -72,9 +74,13 @@ def first_pass():
 		for byte in data:
 			if string.printable.find(chr(byte)) == -1 \
 			   and byte != int("0x92", 16) and byte != int("0x93", 16) \
-			   and byte != int("0x97", 16):
+			   and byte != int("0x97", 16) and byte != int("0x96", 16) \
+			   and byte != int("0xB2", 16) and byte != int("0x91", 16) \
+			   and byte != int("0xFF", 16) and byte != int("0x00", 16):
 				# hex 92 is word's single quote, hex 93 is word's double quote
-				# hex 97 is word's hyphen
+				# hex 96 and 97 are word's hyphens, hex B2 is words squared
+				# hex 91 is word's inverse single quote
+				# word docs also have chunks of 00's or FF's
 				text = False
 				print("{:X}".format(int(byte)))
 				break
