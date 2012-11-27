@@ -21,16 +21,9 @@ def run():
 	second_pass()
 	print_status()
 
-	# read the contents of a block into an array of bytes
-	file = open("blockset/BLOCK0000", 'rb')
-	data = file.read()
-	for x in data:
-		print(data[x])
-	print()
-
-
 
 def first_pass():
+	# Pull out the headers/footers that we can find by magic numbers
 	# We can't remove as we loop through, so keep list and remove after
 	toRemove = []
 	# Loop through every unclassified file
@@ -52,9 +45,16 @@ def first_pass():
 			wordBlocks.append(block)
 			toRemove.append(block)
 
-		# PDF files
+		# PDF files (header)
 		elif data[0] == int("0x25", 16) and data[1] == int("0x50", 16) \
 		     and data[2] == int("0x44", 16) and data[3] == int("0x46", 16):
+			pdfBlocks.append(block)
+			toRemove.append(block)
+		
+		# PDF files (footer)
+		elif data[506] == int("25", 16) and data[507] == int("25", 16) \
+		     and data[508] == int("45", 16) and data[509] == int("4F", 16) \
+		     and data[510] == int("46", 16):
 			pdfBlocks.append(block)
 			toRemove.append(block)
 
@@ -67,9 +67,31 @@ def first_pass():
 		elif data[510] == int("0xFF", 16) and data[511] == int("0xD9", 16):
 			jpegBlocks.append(block)
 			toRemove.append(block)
+		file.close()
+	
+	# remove newly classified blocks
+	for block in toRemove:
+		unclassBlocks.remove(block)
 
-		# If no sig is found, see if all bytes are within ascii printable range
-		# This is a text block from a word file
+	print("Pass 1 complete.")
+	return
+
+def second_pass():
+	# Pull out the pdf blocks that can be found with signatures
+	print("Pass 2 complete.")
+	return
+
+def third_pass():
+	# Pull out the word blocks by looking for plain text and manually finding identifying features
+
+	# We can't remove as we loop through, so keep list and remove after
+	toRemove = []
+	# Loop through every unclassified file
+	for block in unclassBlocks:
+		file = open(block, 'rb')
+		data = file.read()
+		# See if all bytes are within ascii printable range
+		# If so, this is a text block from a word file
 		text = True
 		for byte in data:
 			if string.printable.find(chr(byte)) == -1 \
@@ -88,18 +110,20 @@ def first_pass():
 			print(block)
 			wordBlocks.append(block)
 			toRemove.append(block)
-		file.close()
 	
 	# remove newly classified blocks
 	for block in toRemove:
 		unclassBlocks.remove(block)
 
-	print("Pass 1 complete.")
+	print("Pass 3 complete.")
 	return
 
-def second_pass():
-	# Analysis based on entropy calculations
-	print("Pass 2 complete.")
+def fourth_pass():
+	# Do an enthropy analysis to split the remaining files between jpg and pdf
+	return
+
+def fifth_pass():
+	# Possibly try to order blocks?
 	return
 
 def calc_entropy():

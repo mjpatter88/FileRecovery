@@ -52,6 +52,9 @@ TODO: Problem: The end of pdfs gets detected as plain text. I think I'll have to
 
 Maybe I can manually look at a few pdfs and a few docs and look for specific magic patterns... hmmm...
 
+pdf's seem to use "<<" and ">>" quite often. I could probably look for hex: 0A 3C 3C 20 or hex: 0A 3E 3E 0A.
+
+For the word document I could just look up the text online and use that to do the ordering?
 
 
 
