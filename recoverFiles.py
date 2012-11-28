@@ -10,17 +10,16 @@ wordBlocks = []
 
 
 def run():
-	# Populate first list
+	# Populate first list with every file block
 	for x in range(899):
 		unclassBlocks.append("blockset/BLOCK{0:04}".format(x))
 	
 	first_pass()
 	print_status()
-	return
 
 	second_pass()
 	print_status()
-
+	return
 
 def first_pass():
 	# Pull out the headers/footers that we can find by magic numbers
@@ -31,7 +30,6 @@ def first_pass():
 		file = open(block, 'rb')
 		data = file.read()
 	
-		# Looks for file signatures in blocks (header/footer)
 		# WORD files (.doc)
 		if data[0] == int("0xD0", 16) and data[1] == int("0xCF", 16) \
 		   and data[2] == int("0x11", 16) and data[3] == int("0xE0", 16) \
@@ -52,9 +50,9 @@ def first_pass():
 			toRemove.append(block)
 		
 		# PDF files (footer)
-		elif data[506] == int("25", 16) and data[507] == int("25", 16) \
-		     and data[508] == int("45", 16) and data[509] == int("4F", 16) \
-		     and data[510] == int("46", 16):
+		elif data[506] == int("0x25", 16) and data[507] == int("0x25", 16) \
+		     and data[508] == int("0x45", 16) and data[509] == int("0x4F", 16) \
+		     and data[510] == int("0x46", 16):
 			pdfBlocks.append(block)
 			toRemove.append(block)
 
@@ -78,6 +76,41 @@ def first_pass():
 
 def second_pass():
 	# Pull out the pdf blocks that can be found with signatures
+	# It would likely be better to use regular expressions to do this, but this way should work too.
+
+	# We can't remove as we loop through, so keep list and remove after
+	toRemove = []
+	# Loop through every unclassified file
+	for block in unclassBlocks:
+		file = open(block, 'rb')
+		data = file.read()
+		
+		# There are 512 bytes in each "data" stream data[0] -> data[511]
+		for x in range(0, 512):
+			# Make sure we have enough bytes for the comparison
+			if x < 506:
+				# "n..0000" or "n .0000" or "f..0000"
+				if (data[x] == int("0x6E", 16) and data[x+1] == int("0x0D", 16)) \
+				   or (data[x] == int("0x6E", 16) and data[x+1] == int("0x0A", 16)) \
+				   or (data[x] == int("0x66", 16) and data[x+1] == int("0x0D", 16)):
+					if data[x+2] == int("0x0A", 16) and data[x+3] == int("0x30", 16) \
+					   and data[x+4] == int("0x30", 16) and data[x+5] == int("0x30", 16) \
+					   and data[x+6] == int("0x30", 16):
+						pdfBlocks.append(block)
+						toRemove.append(block)
+						break	# once this block has been classified break
+
+			# Look for brackets (3 types?)
+
+			
+			# TODO: Look at known pdf files and find other signatures
+
+		file.close()
+
+	# remove newly classified blocks
+	for block in toRemove:
+		unclassBlocks.remove(block)
+
 	print("Pass 2 complete.")
 	return
 

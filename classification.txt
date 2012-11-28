@@ -1,0 +1,100 @@
+Partial Classification so far
+
+Word File Blocks:
+
+0002
+0006
+0009
+0017
+0018
+0024
+0043 (maybe) (word i think)
+0048
+0054
+0056
+0060
+0062
+0071
+0073
+0088
+0093
+0094
+0096
+
+0104 (maybe) (word i think)
+0105
+0106
+0109
+0133
+0141
+0144
+0146
+0155
+0162
+0166 (ends with zeros) (word)
+0173
+0179
+0183
+0190 (maybe) (word)
+0191 (maybe) (word)
+0192
+0195
+
+0204
+0214
+0216
+0217
+0220
+0221 (maybe) (word) (not detected, maybe look for "D o c u m e n t" sig?
+0223
+0226
+0241
+0263
+0269
+0277
+0288
+0292
+0296 (maybe) (word) (all zeros)
+
+0303
+0311
+0317
+0320
+0331 (maybe) (word) (all zeros)
+0336
+0348
+0351
+0352
+0355 (maybe) (word) (all zeros)
+0359
+0360
+0361
+0362
+0366 (maybe) (word probably)
+0374
+0382
+0385
+0389
+0400
+
+PDF File Blocks:
+
+Header:
+0075 (pdf)
+
+0025 (maybe) (pdf)
+0030 (maybe) (pdf)
+0034 (maybe) (pdf)
+0150 (maybe) (pdf)
+0167 (maybe) (pdf)
+0172 (maybe) (pdf)
+0233 (maybe) (pdf)
+0255 (maybe) (pdf)
+0281 (maybe) (pdf)
+0282 (maybe) (pdf) (*)
+0333 (maybe) (pdf)
+(still need to do 400+)
+
+
+Done through 400
+
