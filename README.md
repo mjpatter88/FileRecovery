@@ -94,3 +94,5 @@ The three files that need to be part of the word classification: 0027, 0629, 088
 One idea is to take all the remaining files with entropy > 7.4 and concatenate them in a jpg file with the jpg header I already found. Maybe visually I can tell which blocks are part of the picture?
 
 At a good stopping point for now. I still have 531 blocks left to classify, but I'm not exactly sure what to do with them. I am somewhat confident that all or most are either pdf blocks or jpg blocks, but the entropy is very similar in all but a couple. Other than the visual inspection possibility, I'm not real sure where to go from here. Maybe a good night sleep will help.
+
+TODO: In the final report possibly include an "average entropy" stat for each of the sets of blocks I've grouped together. Even if they aren't exactly right I think it will show an impressive different between the three.
