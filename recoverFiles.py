@@ -202,6 +202,8 @@ def fourth_pass():
 		#print("Block num {0:04}, entropy : {1}".format(num, value))
 		#print(value)
 		print("{} : {}".format(unclassBlocks[num], value))
+		# to get the list of unclassified blocks
+		#print("{}".format(unclassBlocks[num]))
 		num = num + 1
 	return
 

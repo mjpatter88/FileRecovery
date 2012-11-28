@@ -113,11 +113,14 @@ Steps:
 3) Fix errors so I get consisten functionality between versions
 4) Write code to automate finding next block.
 	Idea: 
-	Hardcode in the end of the previous block (for now).
+	Hardcode in the end of the previous block (pixel column/rows) (for now).
 	Loop through each block adding it to the jpeg.
 	Calculate the total difference in pixel values along that line.
+		(After the first row compare with row above as well?)
 	Block with least difference wins. (Inspect manually if this works)
 	Then attempt to automate for every block needed in the picture.
+
+After downloading and installing 2.7, I found out there would be several non-trivial changes due to the change in python's handling of file-reading. However, my thought is tat I can just write a new script that points to 2.7, put the list of unclassified files in a text document and go from there.
 
 
 
