@@ -96,3 +96,5 @@ One idea is to take all the remaining files with entropy > 7.4 and concatenate t
 At a good stopping point for now. I still have 531 blocks left to classify, but I'm not exactly sure what to do with them. I am somewhat confident that all or most are either pdf blocks or jpg blocks, but the entropy is very similar in all but a couple. Other than the visual inspection possibility, I'm not real sure where to go from here. Maybe a good night sleep will help.
 
 TODO: In the final report possibly include an "average entropy" stat for each of the sets of blocks I've grouped together. Even if they aren't exactly right I think it will show an impressive different between the three.
+
+TODO: Also I just read online that jpgs tend to have a high number of zeros. Maybe if I ignore those in an entropy calculation I will see more separation? Doubtful but maybe worth a try?
