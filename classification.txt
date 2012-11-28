@@ -77,24 +77,51 @@ Word File Blocks:
 0389
 0400
 
-PDF File Blocks:
+******************************PDF File Blocks******************************
 
 Header:
 0075 (pdf)
 
-0025 (maybe) (pdf)
-0030 (maybe) (pdf)
-0034 (maybe) (pdf)
-0150 (maybe) (pdf)
-0167 (maybe) (pdf)
-0172 (maybe) (pdf)
-0233 (maybe) (pdf)
-0255 (maybe) (pdf)
-0281 (maybe) (pdf)
-0282 (maybe) (pdf) (*)
-0333 (maybe) (pdf)
+0019 (double brackets)
+0025 (n..0000 or f..0000)
+0029 (double brackets)
+0030 (n..0000 or f..0000)
+0032 (marked due to double brackets, but not sure if this is really a pdf file?)
+0034 (n..0000 or f..0000)
+0050 (double brackets)
+0076 (double brackets)
+0083 (marked due to double brackets, but not sure if this is really a pdf file?)
+0100 (double brackets)
+0123 (marked due to double brackets, but not sure if this is really a pdf file?)
+0128 (double brackets)
+0139 (double brackets)
+0150 (n..0000 or f..0000)
+0151 (double brackets)
+0154 (double brackets)
+0167 (n..0000 or f..0000)
+0172 (n..0000 or f..0000)
+0198 (double brackets)
+0206 (double brackets)
+0219 (double brackets)
+0233 (n..0000 or f..0000)
+0239 (double brackets)
+0243 (double brackets)
+0251 (double brackets)
+0255 (n..0000 or f..0000)
+0257 (double brackets)
+0258 (double brackets)
+0276 (marked due to double brackets, but not sure if this is really a pdf file?)
+0281 (n..0000 or f..0000)
+0282 (double brackets)
+0286 (double brackets)
+0333 (n..0000 or f..0000)
 (still need to do 400+)
 
+Idea: see if any of them with double brackets don't have common chars before/after, this would solve the problem of the double brackets randomly occurring (see 0032 and 0083 etc)
 
 Done through 400
+
+
+These were the pdf output blocks that I haven't looked through yet:
+ 'blockset/BLOCK0310', 'blockset/BLOCK0316', 'blockset/BLOCK0318', 'blockset/BLOCK0325', 'blockset/BLOCK0326', 'blockset/BLOCK0356', 'blockset/BLOCK0371', 'blockset/BLOCK0373', 'blockset/BLOCK0390', 'blockset/BLOCK0394', 'blockset/BLOCK0402', 'blockset/BLOCK0406', 'blockset/BLOCK0426', 'blockset/BLOCK0431', 'blockset/BLOCK0433', 'blockset/BLOCK0439', 'blockset/BLOCK0450', 'blockset/BLOCK0457', 'blockset/BLOCK0465', 'blockset/BLOCK0468', 'blockset/BLOCK0469', 'blockset/BLOCK0476', 'blockset/BLOCK0497', 'blockset/BLOCK0512', 'blockset/BLOCK0515', 'blockset/BLOCK0523', 'blockset/BLOCK0525', 'blockset/BLOCK0531', 'blockset/BLOCK0533', 'blockset/BLOCK0537', 'blockset/BLOCK0578', 'blockset/BLOCK0579', 'blockset/BLOCK0590', 'blockset/BLOCK0600', 'blockset/BLOCK0616', 'blockset/BLOCK0634', 'blockset/BLOCK0647', 'blockset/BLOCK0654', 'blockset/BLOCK0674', 'blockset/BLOCK0682', 'blockset/BLOCK0705', 'blockset/BLOCK0723', 'blockset/BLOCK0727', 'blockset/BLOCK0728', 'blockset/BLOCK0753', 'blockset/BLOCK0787', 'blockset/BLOCK0801', 'blockset/BLOCK0803', 'blockset/BLOCK0804', 'blockset/BLOCK0805', 'blockset/BLOCK0847', 'blockset/BLOCK0848', 'blockset/BLOCK0854', 'blockset/BLOCK0859', 'blockset/BLOCK0868', 'blockset/BLOCK0873', 'blockset/BLOCK0885']
 

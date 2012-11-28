@@ -100,9 +100,20 @@ def second_pass():
 						toRemove.append(block)
 						break	# once this block has been classified break
 
-			# Look for brackets (3 types?)
-
-			
+			# Look for double brackets
+			# None in the pdf of the word document I found online, so I think it's safe to do this
+			# at least for this assignment
+			if x < 511:
+				# just look for either type of double brackets
+				if data[x] == int("0x3E", 16) and data[x+1] == int("0x3E", 16):
+					pdfBlocks.append(block)
+					toRemove.append(block)
+					break
+				if data[x] == int("0x3C", 16) and data[x+1] == int("0x3C", 16):
+					pdfBlocks.append(block)
+					toRemove.append(block)
+					break
+					
 			# TODO: Look at known pdf files and find other signatures
 
 		file.close()
