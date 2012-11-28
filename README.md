@@ -80,3 +80,17 @@ I do have a few reservations, which tend to make me think that accomplishing thi
 
 That being said, I think so far my classifications are likely pretty accurate. At this point I'm identifying 82 pdf blocks, 282 word blocks, and the single jpg header block. That leaves 534 blocks unclassified. I'll now move on to doing entropy analysis and see what I find.
 
+From reading a few resources, it seems the average entropy of a jpeg is around 7.6. I'm not sure what the average entropy of a pdf is, but I'm confident it will be lower. I'm hoping if I graph the results I'll be able to see a clear split between the two.
+
+I'm using the following link for the basic formula:
+http://blog.dkbza.org/2007/05/scanning-data-for-entropy-anomalies.html
+
+However, I noticed it needlessly loops through the data n^2 times, so I made the simple optimization required to not do that. The entropy data looks good so far, now to graph the results.
+
+Results are pretty good. There were 3 outliers around 4.0, and upon manual inspection I think those blocks are part of the word file. I'll tweak my algorithm to include them in that section. The rest of the files have entroy above 6 and almost all are near 7.5. This is good, but it also means it will be basically impossible to use this value to differentiate between jpg and pdf blocks.
+
+The three files that need to be part of the word classification: 0027, 0629, 0880. Made a little tweak and now these three are identified as word blocks.
+
+One idea is to take all the remaining files with entropy > 7.4 and concatenate them in a jpg file with the jpg header I already found. Maybe visually I can tell which blocks are part of the picture?
+
+At a good stopping point for now. I still have 531 blocks left to classify, but I'm not exactly sure what to do with them. I am somewhat confident that all or most are either pdf blocks or jpg blocks, but the entropy is very similar in all but a couple. Other than the visual inspection possibility, I'm not real sure where to go from here. Maybe a good night sleep will help.

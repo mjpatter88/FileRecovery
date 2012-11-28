@@ -1,6 +1,7 @@
 #!/c/Python32/python
 
 import string
+import math
 
 # Four lists of blocks
 unclassBlocks = []
@@ -20,6 +21,8 @@ def run():
 
 	third_pass()
 	print_status()
+
+	fourth_pass()
 	return
 
 def first_pass():
@@ -143,6 +146,7 @@ def third_pass():
 	# We can't remove as we loop through, so keep list and remove after
 	toRemove = []
 	# Loop through every unclassified file
+	x = 0
 	for block in unclassBlocks:
 		file = open(block, 'rb')
 		data = file.read()
@@ -156,14 +160,20 @@ def third_pass():
 			   and byte != int("0x92", 16) and byte != int("0x93", 16) \
 			   and byte != int("0x97", 16) and byte != int("0x96", 16) \
 			   and byte != int("0xB2", 16) and byte != int("0x91", 16) \
-			   and byte != int("0xFF", 16) and byte != int("0x00", 16):
+			   and byte != int("0xFF", 16) and byte != int("0x00", 16) \
+			   and byte != int("0xF2", 16) and byte != int("0xE4", 16):
 				# hex 92 is word's single quote, hex 93 is word's double quote
 				# hex 96 and 97 are word's hyphens, hex B2 is words squared
 				# hex 91 is word's inverse single quote
 				# word docs also have chunks of 00's or FF's
-				
+				# word docs also seem to have chunks of F2 E4 alternating (hardcoded magic?)
 				numPrintable = numPrintable - 1
 		
+		# to debug
+		# print(block)
+		# if block == "blockset/BLOCK0027":
+		#	print(numPrintable)
+
 		# Tried a few different values here, 50% seems pretty good
 		if numPrintable > 512*0.50:
 			# print(block)
@@ -179,17 +189,45 @@ def third_pass():
 
 def fourth_pass():
 	# Do an enthropy analysis to split the remaining files between jpg and pdf
+	entropies = []
+
+	for block in unclassBlocks:
+		file = open(block, 'rb')
+		data = file.read()
+		entropies.append(calc_entropy(data))
+
+	# For now print out the entropies
+	num = 0
+	for value in entropies:
+		#print("Block num {0:04}, entropy : {1}".format(num, value))
+		#print(value)
+		print("{} : {}".format(unclassBlocks[num], value))
+		num = num + 1
 	return
 
 def fifth_pass():
 	# Possibly try to order blocks?
 	return
 
-def calc_entropy():
+def calc_entropy(block):
+	# Calculate the entropy of a block of bytes. We know the block is 512 bytes in size.
+	
+	# first get a count of how often each value occurs
 	numTimes = []
-	numTimes.append(2)
-	numTimes.append(5)
-	print("test", numTimes[0], numTimes[1])
+	for x in range(0, 256):
+		numTimes.append(0)
+		# initialize every count to zero
+	for byte in block:
+		numTimes[byte] = numTimes[byte] + 1
+
+	# then do the math to find the entropy
+	entropy = 0
+	for count in numTimes:
+		val = count/512
+		if val > 0.0:	# can't take the log of 0, so ignore those cases
+			entropy = entropy - val*math.log(val, 2)	# log will be negative sine val < 1
+	
+	return entropy
 
 def print_status():
 	print("STATUS: ")
