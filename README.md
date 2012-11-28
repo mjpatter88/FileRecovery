@@ -98,3 +98,29 @@ At a good stopping point for now. I still have 531 blocks left to classify, but 
 TODO: In the final report possibly include an "average entropy" stat for each of the sets of blocks I've grouped together. Even if they aren't exactly right I think it will show an impressive different between the three.
 
 TODO: Also I just read online that jpgs tend to have a high number of zeros. Maybe if I ignore those in an entropy calculation I will see more separation? Doubtful but maybe worth a try?
+
+Visual Inspection Attempt:
+First step, put the jpg header into a jpg file: "cat BLOCK0785 > test.jpg"
+I then opened it with the default image viewer on windows and it was better than expected. I saved the file as "JustHeader.jpg". I found out that the image is 1000 x 737 pixels, and the top left corner is filled in correctly.
+
+Visual inspection might actually work! Although manually doing it will be painful... wonder if I can automate it?
+
+I could automate it well using Python Image Library, but that doesn't support python 3.x. I think it's worth it though, and hopefully it won't be too painful to back port my code to python 2.7
+
+Steps:
+1) Download and install python 2.7
+2) Change first line to point to that interpreter
+3) Fix errors so I get consisten functionality between versions
+4) Write code to automate finding next block.
+	Idea: 
+	Hardcode in the end of the previous block (for now).
+	Loop through each block adding it to the jpeg.
+	Calculate the total difference in pixel values along that line.
+	Block with least difference wins. (Inspect manually if this works)
+	Then attempt to automate for every block needed in the picture.
+
+
+
+
+
+

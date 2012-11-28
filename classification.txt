@@ -1,4 +1,5 @@
 ******************************Word File Blocks******************************
+285 blocks
 
 Header:
 0534
@@ -289,6 +290,8 @@ blockset/BLOCK0898
 
 ******************************PDF File Blocks******************************
 
+82 blocks
+
 Header:
 0075
 
@@ -375,8 +378,8 @@ Header:
 0885 (double brackets)
 
 
-Scratch pad:
-Word ones found manually:
+NOTES:
+Word blocks found manually:
 
 
 

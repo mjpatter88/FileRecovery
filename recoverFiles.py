@@ -232,6 +232,8 @@ def calc_entropy(block):
 def print_status():
 	print("STATUS: ")
 	print("There are {0} unclassified blocks.".format(len(unclassBlocks)))
+	if len(unclassBlocks) > 0:
+		print(unclassBlocks)
 	print("There are {0} pdf blocks.".format(len(pdfBlocks)))
 	if len(pdfBlocks) > 0:
 		print(pdfBlocks)
