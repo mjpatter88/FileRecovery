@@ -15,9 +15,10 @@ def run():
 		unclassBlocks.append("blockset/BLOCK{0:04}".format(x))
 	
 	first_pass()
-	print_status()
 
 	second_pass()
+
+	third_pass()
 	print_status()
 	return
 
@@ -127,9 +128,6 @@ def second_pass():
 					pdfBlocks.append(block)
 					toRemove.append(block)
 					break
-
-			# TODO: Look at known pdf files and find other signatures
-
 		file.close()
 
 	# remove newly classified blocks
@@ -148,9 +146,11 @@ def third_pass():
 	for block in unclassBlocks:
 		file = open(block, 'rb')
 		data = file.read()
-		# See if all bytes are within ascii printable range
+		
+		# See if over half of the bytes are within ascii printable range
 		# If so, this is a text block from a word file
 		text = True
+		numPrintable = 512
 		for byte in data:
 			if string.printable.find(chr(byte)) == -1 \
 			   and byte != int("0x92", 16) and byte != int("0x93", 16) \
@@ -161,11 +161,12 @@ def third_pass():
 				# hex 96 and 97 are word's hyphens, hex B2 is words squared
 				# hex 91 is word's inverse single quote
 				# word docs also have chunks of 00's or FF's
-				text = False
-				print("{:X}".format(int(byte)))
-				break
-		if text:
-			print(block)
+				
+				numPrintable = numPrintable - 1
+		
+		# Tried a few different values here, 50% seems pretty good
+		if numPrintable > 512*0.50:
+			# print(block)
 			wordBlocks.append(block)
 			toRemove.append(block)
 	

@@ -1,86 +1,296 @@
-Partial Classification so far
+******************************Word File Blocks******************************
 
-Word File Blocks:
+Header:
+0534
 
-0002
-0006
-0009
-0017
-0018
-0024
-0043 (maybe) (word i think)
-0048
-0054
-0056
-0060
-0062
-0071
-0073
-0088
-0093
-0094
-0096
+blockset/BLOCK0002
+blockset/BLOCK0006
+blockset/BLOCK0009
+blockset/BLOCK0012
+blockset/BLOCK0015
+blockset/BLOCK0017
+blockset/BLOCK0018
+blockset/BLOCK0023
+blockset/BLOCK0024
+blockset/BLOCK0035
+blockset/BLOCK0043
+blockset/BLOCK0048
+blockset/BLOCK0053
+blockset/BLOCK0054
+blockset/BLOCK0056
+blockset/BLOCK0057
+blockset/BLOCK0059
+blockset/BLOCK0060
+blockset/BLOCK0062
+blockset/BLOCK0071
+blockset/BLOCK0073
+blockset/BLOCK0081
+blockset/BLOCK0084
+blockset/BLOCK0085
+blockset/BLOCK0088
+blockset/BLOCK0093
+blockset/BLOCK0094
+blockset/BLOCK0096
+blockset/BLOCK0098
+blockset/BLOCK0099
+blockset/BLOCK0102
+blockset/BLOCK0104
+blockset/BLOCK0105
+blockset/BLOCK0106
+blockset/BLOCK0107
+blockset/BLOCK0109
+blockset/BLOCK0116
+blockset/BLOCK0120
+blockset/BLOCK0129
+blockset/BLOCK0133
+blockset/BLOCK0138
+blockset/BLOCK0141
+blockset/BLOCK0144
+blockset/BLOCK0146
+blockset/BLOCK0148
+blockset/BLOCK0149
+blockset/BLOCK0152
+blockset/BLOCK0153
+blockset/BLOCK0155
+blockset/BLOCK0159
+blockset/BLOCK0162
+blockset/BLOCK0166
+blockset/BLOCK0168
+blockset/BLOCK0173
+blockset/BLOCK0174
+blockset/BLOCK0175
+blockset/BLOCK0178
+blockset/BLOCK0179
+blockset/BLOCK0183
+blockset/BLOCK0186
+blockset/BLOCK0190
+blockset/BLOCK0191
+blockset/BLOCK0192
+blockset/BLOCK0195
+blockset/BLOCK0204
+blockset/BLOCK0205
+blockset/BLOCK0213
+blockset/BLOCK0214
+blockset/BLOCK0216
+blockset/BLOCK0217
+blockset/BLOCK0218
+blockset/BLOCK0220
+blockset/BLOCK0221
+blockset/BLOCK0223
+blockset/BLOCK0226
+blockset/BLOCK0227
+blockset/BLOCK0229
+blockset/BLOCK0231
+blockset/BLOCK0234
+blockset/BLOCK0235
+blockset/BLOCK0237
+blockset/BLOCK0241
+blockset/BLOCK0250
+blockset/BLOCK0262
+blockset/BLOCK0263
+blockset/BLOCK0269
+blockset/BLOCK0277
+blockset/BLOCK0280
+blockset/BLOCK0283
+blockset/BLOCK0288
+blockset/BLOCK0292
+blockset/BLOCK0296
+blockset/BLOCK0297
+blockset/BLOCK0298
+blockset/BLOCK0300
+blockset/BLOCK0303
+blockset/BLOCK0308
+blockset/BLOCK0311
+blockset/BLOCK0317
+blockset/BLOCK0319
+blockset/BLOCK0320
+blockset/BLOCK0327
+blockset/BLOCK0331
+blockset/BLOCK0336
+blockset/BLOCK0337
+blockset/BLOCK0339
+blockset/BLOCK0341
+blockset/BLOCK0342
+blockset/BLOCK0343
+blockset/BLOCK0348
+blockset/BLOCK0351
+blockset/BLOCK0352
+blockset/BLOCK0353
+blockset/BLOCK0355
+blockset/BLOCK0359
+blockset/BLOCK0360
+blockset/BLOCK0361
+blockset/BLOCK0362
+blockset/BLOCK0366
+blockset/BLOCK0374
+blockset/BLOCK0377
+blockset/BLOCK0379
+blockset/BLOCK0382
+blockset/BLOCK0384
+blockset/BLOCK0385
+blockset/BLOCK0386
+blockset/BLOCK0389
+blockset/BLOCK0391
+blockset/BLOCK0397
+blockset/BLOCK0400
+blockset/BLOCK0401
+blockset/BLOCK0404
+blockset/BLOCK0414
+blockset/BLOCK0415
+blockset/BLOCK0420
+blockset/BLOCK0424
+blockset/BLOCK0429
+blockset/BLOCK0436
+blockset/BLOCK0437
+blockset/BLOCK0438
+blockset/BLOCK0440
+blockset/BLOCK0441
+blockset/BLOCK0445
+blockset/BLOCK0454
+blockset/BLOCK0459
+blockset/BLOCK0460
+blockset/BLOCK0461
+blockset/BLOCK0464
+blockset/BLOCK0466
+blockset/BLOCK0470
+blockset/BLOCK0471
+blockset/BLOCK0474
+blockset/BLOCK0478
+blockset/BLOCK0481
+blockset/BLOCK0486
+blockset/BLOCK0489
+blockset/BLOCK0490
+blockset/BLOCK0491
+blockset/BLOCK0492
+blockset/BLOCK0493
+blockset/BLOCK0495
+blockset/BLOCK0502
+blockset/BLOCK0506
+blockset/BLOCK0510
+blockset/BLOCK0516
+blockset/BLOCK0517
+blockset/BLOCK0519
+blockset/BLOCK0526
+blockset/BLOCK0535
+blockset/BLOCK0538
+blockset/BLOCK0543
+blockset/BLOCK0544
+blockset/BLOCK0545
+blockset/BLOCK0549
+blockset/BLOCK0551
+blockset/BLOCK0558
+blockset/BLOCK0561
+blockset/BLOCK0566
+blockset/BLOCK0569
+blockset/BLOCK0573
+blockset/BLOCK0575
+blockset/BLOCK0585
+blockset/BLOCK0587
+blockset/BLOCK0591
+blockset/BLOCK0598
+blockset/BLOCK0610
+blockset/BLOCK0611
+blockset/BLOCK0613
+blockset/BLOCK0615
+blockset/BLOCK0617
+blockset/BLOCK0620
+blockset/BLOCK0626
+blockset/BLOCK0635
+blockset/BLOCK0636
+blockset/BLOCK0652
+blockset/BLOCK0653
+blockset/BLOCK0659
+blockset/BLOCK0660
+blockset/BLOCK0662
+blockset/BLOCK0664
+blockset/BLOCK0665
+blockset/BLOCK0670
+blockset/BLOCK0672
+blockset/BLOCK0676
+blockset/BLOCK0678
+blockset/BLOCK0683
+blockset/BLOCK0687
+blockset/BLOCK0689
+blockset/BLOCK0697
+blockset/BLOCK0699
+blockset/BLOCK0704
+blockset/BLOCK0709
+blockset/BLOCK0711
+blockset/BLOCK0712
+blockset/BLOCK0715
+blockset/BLOCK0719
+blockset/BLOCK0722
+blockset/BLOCK0729
+blockset/BLOCK0730
+blockset/BLOCK0736
+blockset/BLOCK0744
+blockset/BLOCK0745
+blockset/BLOCK0746
+blockset/BLOCK0747
+blockset/BLOCK0748
+blockset/BLOCK0750
+blockset/BLOCK0756
+blockset/BLOCK0757
+blockset/BLOCK0762
+blockset/BLOCK0765
+blockset/BLOCK0768
+blockset/BLOCK0771
+blockset/BLOCK0772
+blockset/BLOCK0773
+blockset/BLOCK0775
+blockset/BLOCK0780
+blockset/BLOCK0783
+blockset/BLOCK0784
+blockset/BLOCK0790
+blockset/BLOCK0791
+blockset/BLOCK0794
+blockset/BLOCK0796
+blockset/BLOCK0797
+blockset/BLOCK0798
+blockset/BLOCK0799
+blockset/BLOCK0802
+blockset/BLOCK0806
+blockset/BLOCK0812
+blockset/BLOCK0813
+blockset/BLOCK0814
+blockset/BLOCK0815
+blockset/BLOCK0818
+blockset/BLOCK0820
+blockset/BLOCK0821
+blockset/BLOCK0822
+blockset/BLOCK0823
+blockset/BLOCK0824
+blockset/BLOCK0829
+blockset/BLOCK0832
+blockset/BLOCK0835
+blockset/BLOCK0842
+blockset/BLOCK0845
+blockset/BLOCK0849
+blockset/BLOCK0850
+blockset/BLOCK0852
+blockset/BLOCK0855
+blockset/BLOCK0856
+blockset/BLOCK0857
+blockset/BLOCK0860
+blockset/BLOCK0862
+blockset/BLOCK0864
+blockset/BLOCK0867
+blockset/BLOCK0870
+blockset/BLOCK0871
+blockset/BLOCK0875
+blockset/BLOCK0877
+blockset/BLOCK0879
+blockset/BLOCK0884
+blockset/BLOCK0892
+blockset/BLOCK0894
+blockset/BLOCK0898
 
-0104 (maybe) (word i think)
-0105
-0106
-0109
-0133
-0141
-0144
-0146
-0155
-0162
-0166 (ends with zeros) (word)
-0173
-0179
-0183
-0190 (maybe) (word)
-0191 (maybe) (word)
-0192
-0195
 
-0204
-0214
-0216
-0217
-0220
-0221 (maybe) (word) (not detected, maybe look for "D o c u m e n t" sig?
-0223
-0226
-0241
-0263
-0269
-0277
-0288
-0292
-0296 (maybe) (word) (all zeros)
-
-0303
-0311
-0317
-0320
-0331 (maybe) (word) (all zeros)
-0336
-0348
-0351
-0352
-0355 (maybe) (word) (all zeros)
-0359
-0360
-0361
-0362
-0366 (maybe) (word probably)
-0374
-0382
-0385
-0389
-0400
 
 ******************************PDF File Blocks******************************
 
 Header:
-0075 (pdf)
+0075
 
 0019 (double brackets)
 0025 (n..0000 or f..0000)
@@ -165,6 +375,121 @@ Header:
 0885 (double brackets)
 
 
-Idea: see if any of them with double brackets don't have common chars before/after, this would solve the problem of the double brackets randomly occurring (see 0032 and 0083 etc)
+Scratch pad:
+Word ones found manually:
+
+
+
+0002
+0006
+0009
+0017
+0018
+0024
+0043 (maybe) (word i think)
+0048
+0054
+0056
+0060
+0062
+0071
+0073
+0088
+0093
+0094
+0096
+
+0104 (maybe) (word i think)
+0105
+0106
+0109
+0133
+0141
+0144
+0146
+0155
+0162
+0166 (ends with zeros) (word)
+0173
+0179
+0183
+0190 (maybe) (word)
+0191 (maybe) (word)
+0192
+0195
+
+0204
+0214
+0216
+0217
+0220
+0221 (maybe) (word) (not detected, maybe look for "D o c u m e n t" sig?
+0223
+0226
+0241
+0263
+0269
+0277
+0288
+0292
+0296 (maybe) (word) (all zeros)
+
+0303
+0311
+0317
+0320
+0331 (maybe) (word) (all zeros)
+0336
+0348
+0351
+0352
+0355 (maybe) (word) (all zeros)
+0359
+0360
+0361
+0362
+0366 (maybe) (word probably)
+0374
+0382
+0385
+0389
+0400
+
+
+150 found looking for every character printable
+There are 150 word blocks.
+['blockset/BLOCK0534', 'blockset/BLOCK0002', 'blockset/BLOCK0006', 'blockset/BLOCK0009', 'blockset/B
+LOCK0017', 'blockset/BLOCK0018', 'blockset/BLOCK0023', 'blockset/BLOCK0024', 'blockset/BLOCK0043', '
+blockset/BLOCK0048', 'blockset/BLOCK0054', 'blockset/BLOCK0056', 'blockset/BLOCK0060', 'blockset/BLO
+CK0062', 'blockset/BLOCK0071', 'blockset/BLOCK0073', 'blockset/BLOCK0088', 'blockset/BLOCK0093', 'bl
+ockset/BLOCK0094', 'blockset/BLOCK0096', 'blockset/BLOCK0099', 'blockset/BLOCK0102', 'blockset/BLOCK
+0104', 'blockset/BLOCK0105', 'blockset/BLOCK0106', 'blockset/BLOCK0109', 'blockset/BLOCK0133', 'bloc
+kset/BLOCK0141', 'blockset/BLOCK0144', 'blockset/BLOCK0146', 'blockset/BLOCK0149', 'blockset/BLOCK01
+55', 'blockset/BLOCK0162', 'blockset/BLOCK0166', 'blockset/BLOCK0173', 'blockset/BLOCK0179', 'blocks
+et/BLOCK0183', 'blockset/BLOCK0190', 'blockset/BLOCK0191', 'blockset/BLOCK0192', 'blockset/BLOCK0195
+', 'blockset/BLOCK0204', 'blockset/BLOCK0214', 'blockset/BLOCK0216', 'blockset/BLOCK0217', 'blockset
+/BLOCK0220', 'blockset/BLOCK0223', 'blockset/BLOCK0226', 'blockset/BLOCK0241', 'blockset/BLOCK0263',
+ 'blockset/BLOCK0269', 'blockset/BLOCK0277', 'blockset/BLOCK0288', 'blockset/BLOCK0292', 'blockset/B
+LOCK0296', 'blockset/BLOCK0303', 'blockset/BLOCK0311', 'blockset/BLOCK0317', 'blockset/BLOCK0320', '
+blockset/BLOCK0331', 'blockset/BLOCK0336', 'blockset/BLOCK0348', 'blockset/BLOCK0351', 'blockset/BLO
+CK0352', 'blockset/BLOCK0355', 'blockset/BLOCK0359', 'blockset/BLOCK0360', 'blockset/BLOCK0361', 'bl
+ockset/BLOCK0362', 'blockset/BLOCK0366', 'blockset/BLOCK0374', 'blockset/BLOCK0382', 'blockset/BLOCK
+0385', 'blockset/BLOCK0389', 'blockset/BLOCK0400', 'blockset/BLOCK0401', 'blockset/BLOCK0415', 'bloc
+kset/BLOCK0420', 'blockset/BLOCK0438', 'blockset/BLOCK0440', 'blockset/BLOCK0445', 'blockset/BLOCK04
+61', 'blockset/BLOCK0471', 'blockset/BLOCK0474', 'blockset/BLOCK0478', 'blockset/BLOCK0492', 'blocks
+et/BLOCK0502', 'blockset/BLOCK0506', 'blockset/BLOCK0517', 'blockset/BLOCK0535', 'blockset/BLOCK0543
+', 'blockset/BLOCK0545', 'blockset/BLOCK0549', 'blockset/BLOCK0551', 'blockset/BLOCK0561', 'blockset
+/BLOCK0569', 'blockset/BLOCK0573', 'blockset/BLOCK0575', 'blockset/BLOCK0585', 'blockset/BLOCK0587',
+ 'blockset/BLOCK0591', 'blockset/BLOCK0598', 'blockset/BLOCK0611', 'blockset/BLOCK0615', 'blockset/B
+LOCK0617', 'blockset/BLOCK0620', 'blockset/BLOCK0636', 'blockset/BLOCK0652', 'blockset/BLOCK0653', '
+blockset/BLOCK0660', 'blockset/BLOCK0662', 'blockset/BLOCK0670', 'blockset/BLOCK0676', 'blockset/BLO
+CK0683', 'blockset/BLOCK0689', 'blockset/BLOCK0697', 'blockset/BLOCK0709', 'blockset/BLOCK0711', 'bl
+ockset/BLOCK0712', 'blockset/BLOCK0719', 'blockset/BLOCK0729', 'blockset/BLOCK0730', 'blockset/BLOCK
+0736', 'blockset/BLOCK0744', 'blockset/BLOCK0745', 'blockset/BLOCK0756', 'blockset/BLOCK0765', 'bloc
+kset/BLOCK0794', 'blockset/BLOCK0796', 'blockset/BLOCK0799', 'blockset/BLOCK0812', 'blockset/BLOCK08
+13', 'blockset/BLOCK0814', 'blockset/BLOCK0815', 'blockset/BLOCK0818', 'blockset/BLOCK0820', 'blocks
+et/BLOCK0821', 'blockset/BLOCK0822', 'blockset/BLOCK0823', 'blockset/BLOCK0829', 'blockset/BLOCK0832
+', 'blockset/BLOCK0845', 'blockset/BLOCK0849', 'blockset/BLOCK0860', 'blockset/BLOCK0862', 'blockset
+/BLOCK0864', 'blockset/BLOCK0870', 'blockset/BLOCK0871', 'blockset/BLOCK0877', 'blockset/BLOCK0884']
 
 

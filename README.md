@@ -52,9 +52,31 @@ TODO: Problem: The end of pdfs gets detected as plain text. I think I'll have to
 
 Maybe I can manually look at a few pdfs and a few docs and look for specific magic patterns... hmmm...
 
-pdf's seem to use "<<" and ">>" quite often. I could probably look for hex: 0A 3C 3C 20 or hex: 0A 3E 3E 0A.
+pdf's seem to use "<<" and ">>" quite often. I'll use double bracket combinations to identify pdfs. I do realize that a word document could contain double brackets, but I'm not sure if there's any other way around this rare mis-classification?
 
-For the word document I could just look up the text online and use that to do the ordering?
+I could probably look for hex: 0A 3C 3C 20 or hex: 0A 3E 3E 0A or hex: 3C 3C 2F
 
+Based on the headers, it's PDF 1.4, and Word .doc (2003)
 
+Another interesting link:http://crucialsecurityblog.harris.com/tag/entropy/
+Average enthropy of a jpeg is very high, close to 8!
+
+At this point I think my approach will be the following:
+
+1)Identify the header files.
+2)Pull out pdf files: look for " n..0000" (beginning or end) or the hex above "<<" and ">>" and others. (The word doc doesn't have any double brackets in the text, so I should be safe searching for those."
+3)Pull out the plain text files and try to get all the word files out (manually find identifying features.)
+4)Do an entropy analysis to split the remaining ones between pdf and jpeg.
+5)Maybe try to reorder them? Not sure how yet...
+6)Another option would be to put everything in a jpg file and look for which chunks are image... can you do this?
+
+For the word document I could just look up the text online and use that to do the ordering? That's what I'll do for step 3. I couldn't find the word document, but I found the pdf version.
+
+Step 2 turned out to be pretty successful. I'm identifying 82 pdf blocks and I feel pretty good about all of them. I think there are more, but I'll have to find those through entropy analysis. I did have to hardcode in some special cases, because my search for "<<" and ">>" located a few files that I wasn't comfortable labeling as pdf files for sure. The brackets were in the middle of random data and could have just as easily been jpg blocks. I think I'm done with this pass of searching for pdf files based on signatures, at least for now.
+
+Step 3 was also fairly successful. I started by looking files with every character printable. Then I looked through some of the .doc files in a hex editor, and realized many chunks had mostly either 00's, FF's, or printable characters, but clearly not all. I tried looking for a certain percentage of printable characters, and settled on over 50%. I first tried over 75%, but over 50% only found a few more blocks (confirming my assumptions). I manually checked each of the blocks and I feel pretty comfortable about labeling them as word blocks for now.
+
+I do have a few reservations, which tend to make me think that accomplishing this goal with 100% confidence is almost impossible. I was looking through some .pdf files and .doc files I have on my pc, and I realized some blocks of each could be identical. Also pdfs can have jpgs embedded, etc, so really this classification is just a best guess. In theory and easily in practice you could face a 512 byte block that could be valid data for any of the three types of files.
+
+That being said, I think so far my classifications are likely pretty accurate. At this point I'm identifying 82 pdf blocks, 282 word blocks, and the single jpg header block. That leaves 534 blocks unclassified. I'll now move on to doing entropy analysis and see what I find.
 
