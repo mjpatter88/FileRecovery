@@ -106,14 +106,28 @@ def second_pass():
 			if x < 511:
 				# just look for either type of double brackets
 				if data[x] == int("0x3E", 16) and data[x+1] == int("0x3E", 16):
+					# avoid files that I looked and maybe arent' pdfs
+					if data[x+2] == int("0x57", 16) and data[x+3] == int("0x8F", 16) \
+					   or data[x+2] == int("0x93", 16) and data[x+3] == int("0x17", 16) \
+					   or data[x+2] == int("0xBC", 16) and data[x+3] == int("0x60", 16) \
+					   or data[x+2] == int("0x5B", 16) and data[x+3] == int("0xCA", 16) \
+					   or data[x+2] == int("0xC3", 16) and data[x+3] == int("0xF9", 16):
+						break
 					pdfBlocks.append(block)
 					toRemove.append(block)
 					break
+
 				if data[x] == int("0x3C", 16) and data[x+1] == int("0x3C", 16):
+					# avoid files that I looked and maybe arent' pdfs
+					if data[x+2] == int("0x55", 16) and data[x+3] == int("0xB7", 16) \
+					   or data[x+2] == int("0x26", 16) and data[x+3] == int("0x6F", 16) \
+					   or data[x+2] == int("0x22", 16) and data[x+3] == int("0xE6", 16) \
+					   or data[x+2] == int("0x77", 16) and data[x+3] == int("0x90", 16):
+						break
 					pdfBlocks.append(block)
 					toRemove.append(block)
 					break
-					
+
 			# TODO: Look at known pdf files and find other signatures
 
 		file.close()
