@@ -27,6 +27,7 @@ def run():
 			continue
 		if stage == 1:
 			knownBlocks.append(line[0:len(line)-1])	# remove \n from end of name
+			print("Known file: {}".format(line[0:len(line)-1]))
 		if stage == 2:
 			newBlocks.append(line[0:len(line)-1])	# remove \n from end of name
 	file.close()
@@ -35,12 +36,12 @@ def run():
 		outFile = open("test.jpg", 'wb')
 		# First add in the known correct data
 		for block in knownBlocks:
-			print("Known file: {}".format(block))
 			newFile = open(block, 'rb')
 			for byte in newFile:
 				outFile.write(byte)
 			newFile.close()
 		# Then add one possible guess
+		print("New file: {}".format(newBlock))
 		newFile = open(newBlock, 'rb')
 		for byte in newFile:
 			outFile.write(byte)
@@ -58,14 +59,19 @@ def run():
 		img = ImageGrab.grab((left, top, right, bottom))
 		# could optimize  more by only grabbing the pixels i'm comparing?
 		# do this if processing becomes an issue
-		img.save("test2.jpg")
+		# img.save("test2.jpg")
 
 		left_col = 31	# hardcode until I find a better way
-		top_row = 142
-		bottom_row = 157
+		top_row = 0
+		bottom_row = 15
+		
+		top_left_r = 227	# verify top left pixel is what it should be
+		top_left_g = 232	# otherwise it's a corrupt file
+		top_left_b = 235
+		if img.getpixel((0,0)) != (227, 232, 235):
+			print "Bad File"
 
-		# for now just do this once, don't loop
-		break
+
 
 	outFile.close()
 
