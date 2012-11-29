@@ -120,9 +120,11 @@ Steps:
 	Block with least difference wins. (Inspect manually if this works)
 	Then attempt to automate for every block needed in the picture.
 
-After downloading and installing 2.7, I found out there would be several non-trivial changes due to the change in python's handling of file-reading. However, my thought is tat I can just write a new script that points to 2.7, put the list of unclassified files in a text document and go from there.
+After downloading and installing 2.7, I found out there would be several non-trivial changes due to the change in python's handling of file-reading. However, my thought is that I can just write a new script that points to 2.7, put the list of unclassified files in a text document and go from there.
 
+I coded most of this up and then tried it. I originally tried it with Windows Photo Viewer which is the default program for opening images on windows. However, after I testing I determined that I had to sleep 1.5 seconds after I updated the image for the display to actually update. I need to try about 500 different blocks for the first one, so 1.5 * 500 = 750 seconds which is over 10 minutes. I'll need to do this probably a couple thousand times, so this quickly becomes unpractical. Thankfully I thought to try other programs and see if any update faster. Eventually I tried opening it with "Microsoft Office" and it was better than expected! I now am only sleeping 0.1 second, and could maybe go ever faster but haven't tested.
 
+Now I need to write the comparison algorithm and then test to see if all this madness actually works.
 
 
 
