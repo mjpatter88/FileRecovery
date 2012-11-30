@@ -31,6 +31,10 @@ def run():
 		if stage == 2:
 			newBlocks.append(line[0:len(line)-1])	# remove \n from end of name
 	file.close()
+	
+	min = 1000000	# pick a number bigger than possible for now
+	minBlock = None	# nothing for now
+
 	# loop adding known data to the file and one "guess" block
 	for newBlock in newBlocks:
 		outFile = open("test.jpg", 'wb')
@@ -60,20 +64,42 @@ def run():
 		# could optimize  more by only grabbing the pixels i'm comparing?
 		# do this if processing becomes an issue
 		# img.save("test2.jpg")
-
-		left_col = 31	# hardcode until I find a better way
-		top_row = 0
-		bottom_row = 15
 		
-		top_left_r = 227	# verify top left pixel is what it should be
-		top_left_g = 232	# otherwise it's a corrupt file
+		# Verify top left pixel is what is expected
+		# otherwise it's a corrupt image file
+		top_left_r = 227	
+		top_left_g = 232	
 		top_left_b = 235
 		if img.getpixel((0,0)) != (227, 232, 235):
 			print "Bad File"
+			continue
+		
+		# pixels to compare
+		# hardcode until I find a better way
+		left_col = 31	# column of pixels to compare to column immediately right of it
+		top_row = 0
+		bottom_row = 15
+		
+		difference = 0
+		for x in range(top_row, bottom_row+1):
+			pix1 = img.getpixel((left_col, x))
+			pix2 = img.getpixel((left_col+1, x))
+			difference = difference + abs(pix1[0] - pix2[0]) \
+			     + abs(pix1[1] - pix2[1]) + abs(pix1[2] - pix2[2])
+		
+		if difference < min:
+			print "New min: {}".format(difference)
+			min = difference
+			minBlock = newBlock
+	
+	
+	# print results
+	print "Next file: {}".format(minBlock)
+	# print reminder to add to known list
+	
+	# write knowns files plus new file to image
 
-
-
-	outFile.close()
+	# outFile.close()
 
 
 if __name__ == "__main__":
