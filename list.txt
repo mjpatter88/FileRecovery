@@ -3,6 +3,7 @@ blockset/BLOCK0044
 blockset/BLOCK0322
 blockset/BLOCK0888
 blockset/BLOCK0111
+blockset/BLOCK0766
 
 blockset/BLOCK0000
 blockset/BLOCK0001
@@ -463,7 +464,6 @@ blockset/BLOCK0760
 blockset/BLOCK0761
 blockset/BLOCK0763
 blockset/BLOCK0764
-blockset/BLOCK0766
 blockset/BLOCK0767
 blockset/BLOCK0769
 blockset/BLOCK0770
@@ -531,3 +531,4 @@ blockset/BLOCK0893
 blockset/BLOCK0895
 blockset/BLOCK0896
 blockset/BLOCK0897
+

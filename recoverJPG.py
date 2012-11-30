@@ -45,7 +45,6 @@ def run():
 				outFile.write(byte)
 			newFile.close()
 		# Then add one possible guess
-		print("New file: {}".format(newBlock))
 		newFile = open(newBlock, 'rb')
 		for byte in newFile:
 			outFile.write(byte)
@@ -71,7 +70,7 @@ def run():
 		top_left_g = 232	
 		top_left_b = 235
 		if img.getpixel((0,0)) != (227, 232, 235):
-			print "Bad File"
+			print "{0}: Bad File".format(newBlock)
 			continue
 		
 		# pixels to compare
@@ -80,32 +79,50 @@ def run():
 		top_row = 0
 		bottom_row = 15
 		
+		# compare three colunms: the border between old and new, 
+		# 8 pixels left of the border and 16 pixels left of the border
 		difference = 0
 		for x in range(top_row, bottom_row+1):
+			
 			pix1 = img.getpixel((left_col, x))
 			pix2 = img.getpixel((left_col+1, x))
 			difference = difference + abs(pix1[0] - pix2[0]) \
 			     + abs(pix1[1] - pix2[1]) + abs(pix1[2] - pix2[2])
-		for x in range(top_row+8, bottom_row+1):
-			pix1 = img.getpixel((left_col-8, x))
-			pix2 = img.getpixel((left_col-7, x))
-			difference = difference + abs(pix1[0] - pix2[0]) \
-			     + abs(pix1[1] - pix2[1]) + abs(pix1[2] - pix2[2])
+			
+			pix3 = img.getpixel((left_col-8, x))
+			pix4 = img.getpixel((left_col-7, x))
+			difference = difference + abs(pix3[0] - pix4[0]) \
+			     + abs(pix3[1] - pix4[1]) + abs(pix3[2] - pix4[2])
 
-		print "diff: {}".format(difference)
+			pix5 = img.getpixel((left_col-16, x))
+			pix6 = img.getpixel((left_col-15, x))
+			difference = difference + abs(pix5[0] - pix6[0]) \
+			     + abs(pix5[1] - pix6[1]) + abs(pix5[2] - pix6[2])
+
+		print("{0}:{1}".format(newBlock, difference))
 		if difference < min:
 			print "New min: {}".format(difference)
 			min = difference
 			minBlock = newBlock
 	
-	
 	# print results
 	print "Next file: {}".format(minBlock)
-	# print reminder to add to known list
 	
 	# write knowns files plus new file to image
-
-	# outFile.close()
+	outFile = open("test.jpg", 'wb')
+	# First add in the known correct data
+	for block in knownBlocks:
+		newFile = open(block, 'rb')
+		for byte in newFile:
+			outFile.write(byte)
+		newFile.close()
+	# Then add the newly determined next block
+	newFile = open(minBlock, 'rb')
+	for byte in newFile:
+		outFile.write(byte)
+	newFile.close()
+	outFile.flush()
+	outFile.close()
 
 
 if __name__ == "__main__":

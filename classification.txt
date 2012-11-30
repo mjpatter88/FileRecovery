@@ -5,6 +5,15 @@ In order
 Header
 0785
 
+So far maybe:
+blockset/BLOCK0785
+blockset/BLOCK0044
+blockset/BLOCK0322
+blockset/BLOCK0888
+blockset/BLOCK0111
+
+blockset/BLOCK0766
+
 
 ******************************Word File Blocks******************************
 285 blocks
