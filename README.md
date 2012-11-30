@@ -126,6 +126,6 @@ I coded most of this up and then tried it. I originally tried it with Windows Ph
 
 Now I need to write the comparison algorithm and then test to see if all this madness actually works.
 
+The comparison algorithm is working, but it doesn't seem to get it right every time. I noticed that it's not just the "border column" of pixels I need to look at, but actually 8 pixels to the left of that on the bottom half as well. Since I've been doing this it seems to be working better, but I'm not 100% sure yet. I'm going to try manually verifying for the first row and then see what happens on the second row. I'll for sure need to have the first one based soley on the row above it...
 
-
-
+Problem detected: It seems like the "bad files" are inconsistent and might happen somewhat randomly. Go back to running with just the header in there and see if the bad files are consistent. If not, try running it with the sleep set to .5 just to see. If I can't figure it out, just keep a list and then afterwards check those by hand?

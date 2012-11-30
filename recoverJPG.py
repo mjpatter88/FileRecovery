@@ -76,7 +76,7 @@ def run():
 		
 		# pixels to compare
 		# hardcode until I find a better way
-		left_col = 31	# column of pixels to compare to column immediately right of it
+		left_col = 975	# column of pixels to compare to column immediately right of it
 		top_row = 0
 		bottom_row = 15
 		
@@ -86,7 +86,13 @@ def run():
 			pix2 = img.getpixel((left_col+1, x))
 			difference = difference + abs(pix1[0] - pix2[0]) \
 			     + abs(pix1[1] - pix2[1]) + abs(pix1[2] - pix2[2])
-		
+		for x in range(top_row+8, bottom_row+1):
+			pix1 = img.getpixel((left_col-8, x))
+			pix2 = img.getpixel((left_col-7, x))
+			difference = difference + abs(pix1[0] - pix2[0]) \
+			     + abs(pix1[1] - pix2[1]) + abs(pix1[2] - pix2[2])
+
+		print "diff: {}".format(difference)
 		if difference < min:
 			print "New min: {}".format(difference)
 			min = difference
