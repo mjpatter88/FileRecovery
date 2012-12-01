@@ -15,6 +15,10 @@ blockset/BLOCK0766
 blockset/BLOCK0285
 blockset/BLOCK0051
 blockset/BLOCK0294
+blockset/BLOCK0581
+blockset/BLOCK0484
+blockset/BLOCK0135
+blockset/BLOCK0740
 
 ******************************Word File Blocks******************************
 285 blocks

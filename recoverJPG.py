@@ -75,9 +75,9 @@ def run():
 		
 		# pixels to compare
 		# hardcode until I find a better way
-		left_col = 655	# column of pixels to compare to column immediately right of it
-		top_row = 16
-		bottom_row = 31
+		left_col = 783	# column of pixels to compare to column immediately right of it
+		top_row = 32
+		bottom_row = 47
 		
 		# compare three colunms: the border between old and new, 
 		# 8 pixels left of the border and 16 pixels left of the border

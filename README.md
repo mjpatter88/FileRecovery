@@ -135,3 +135,33 @@ I'm proceeding with this idea. I check every "bad file" by hand, but so far ther
 I updated the algorithm so it now checks 3 columns. The border, the column 8 pixels left of the border, and the column 16 pixels left of the border. This is due to the fact that both of these chunks of 8x8 pixels seem to be influenced by the next block file. I think it actually might be working. I just found one that wrapped around from one line to the other, and it matches up well! I'm going to continue with the current algorithm but just visually confirm that it matches the line above it. If I run into problems I can add that check into the algorithm, but right now it seems like it might work ok even without that!
 
 I had to add the previously mentioned algorithm because the second row wasn't being detected properly. After adding it, it's still not perfect, but usually one of the top two or three options is correct and I can just eyeball it and tell, or at least so I think.  It should become apparent as I keep moving through the image.
+
+Things continue to be going well, and the algorithm is working better after the bumpy start. I think it's much more effective when it's not the first row of the image, as it can compare along the top row.
+
+So far I've identified the following blocks at the start of the image:
+blockset/BLOCK0785
+blockset/BLOCK0044
+blockset/BLOCK0322
+blockset/BLOCK0888
+blockset/BLOCK0111
+blockset/BLOCK0766
+blockset/BLOCK0285
+blockset/BLOCK0051
+blockset/BLOCK0294
+blockset/BLOCK0581
+blockset/BLOCK0484
+blockset/BLOCK0135
+
+That almost completes the first 3 rows of the image! Found the next one and am feeling fairly confident. At this point I think the image might be a scan of a piece of paper or something like that?
+
+Anyway, I'm going to try to automate the whole process. Here's my plan:
+1)Git commit what I have
+2)Automate finding the start column and rows and adding the info to list.txt etc.
+3)Do a test run and verify that it works.
+4)Git commit
+5)Automate multiple runs (run for 10 at a time? and sleep 5 in between)
+6)Test run
+7)Git commit
+8)Continue running
+
+

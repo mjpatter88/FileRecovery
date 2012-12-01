@@ -7,6 +7,10 @@ blockset/BLOCK0766
 blockset/BLOCK0285
 blockset/BLOCK0051
 blockset/BLOCK0294
+blockset/BLOCK0581
+blockset/BLOCK0484
+blockset/BLOCK0135
+blockset/BLOCK0740
 
 blockset/BLOCK0000
 blockset/BLOCK0001
@@ -89,7 +93,6 @@ blockset/BLOCK0130
 blockset/BLOCK0131
 blockset/BLOCK0132
 blockset/BLOCK0134
-blockset/BLOCK0135
 blockset/BLOCK0136
 blockset/BLOCK0137
 blockset/BLOCK0140
@@ -281,7 +284,6 @@ blockset/BLOCK0479
 blockset/BLOCK0480
 blockset/BLOCK0482
 blockset/BLOCK0483
-blockset/BLOCK0484
 blockset/BLOCK0485
 blockset/BLOCK0487
 blockset/BLOCK0488
@@ -341,7 +343,6 @@ blockset/BLOCK0574
 blockset/BLOCK0576
 blockset/BLOCK0577
 blockset/BLOCK0580
-blockset/BLOCK0581
 blockset/BLOCK0582
 blockset/BLOCK0583
 blockset/BLOCK0584
@@ -449,7 +450,6 @@ blockset/BLOCK0735
 blockset/BLOCK0737
 blockset/BLOCK0738
 blockset/BLOCK0739
-blockset/BLOCK0740
 blockset/BLOCK0741
 blockset/BLOCK0742
 blockset/BLOCK0743
