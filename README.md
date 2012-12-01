@@ -164,4 +164,14 @@ Anyway, I'm going to try to automate the whole process. Here's my plan:
 7)Git commit
 8)Continue running
 
+My plan for finding the new coordinates is to start in the top right corner and move down looking for the first gray (128, 128, 128) pixel. Once that is found that is the "top_row" variable. "bottom_row" can just be set to "top_row + 15" and that should work. Then move left along this row until I hit a non-gray pixel, this is the "left col" value. That should be all that is needed.
 
+So the part about finding the new coordinates was easy, but somewhere along the line I started getting strange results. It seemed that the "top difference" calculation was all messed up and I was getting frustrated. I was about to give up, but I decided to go back to just the 3 column detection and see how that did. Turns out it works very well, and I've been puttering along well since then.
+
+The looping structure seems to work fine, and I just finished running it for two loops automatically. It successfully found both blocks and worker perfectly.
+
+The only issue I really have is there are still files that don't display correctly on occaison, so I'm kinda just hoping none of them are the one I'm looking for. I do manually verify that the blocks picked are a match, so I should detect a problem.
+
+Also, rarely the program will fail due to a "permission denied" error when attempting to open the output file. So far I've been able to fix this by increasing the sleep statement in the main loop, so hopefully that will keep working.
+
+Right now it takes about 4 minutes to identify a block, but it should be all automated and ready to go once I change that loop variable.

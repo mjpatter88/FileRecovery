@@ -15,7 +15,6 @@ knownBlocks = []
 newBlocks = []
 
 def run():
-	print "running"
 	
 	# get list of files from the list.txt file
 	# files until the first line break are ones already ordered
@@ -27,10 +26,93 @@ def run():
 			continue
 		if stage == 1:
 			knownBlocks.append(line[0:len(line)-1])	# remove \n from end of name
-			print("Known file: {}".format(line[0:len(line)-1]))
+			#print("Known file: {}".format(line[0:len(line)-1]))
 		if stage == 2:
 			newBlocks.append(line[0:len(line)-1])	# remove \n from end of name
 	file.close()
+	
+	x = 0
+	while 1:
+		# calc new coordinates
+		# first make sure file has all known blocks in it
+		outFile = open("test.jpg", 'wb')
+		# First add in the known correct data
+		for block in knownBlocks:
+			newFile = open(block, 'rb')
+			for byte in newFile:
+				outFile.write(byte)
+			newFile.close()
+		outFile.flush()
+		outFile.close()
+		time.sleep(1)
+
+		# Take a screenshot and analyze it
+		left = 22	
+		top = 140	# change these if window moves
+		right = 1021
+		bottom = 876
+		img = ImageGrab.grab((left, top, right, bottom))
+		for row in range(0, 735):
+			pix = img.getpixel((998, row))
+			if (abs(pix[0] - 128) < 5) and (abs(pix[1] - 128) < 5) \
+			    and (abs(pix[2] - 128) < 5):
+				break
+
+		# starting at the right edge and moving left
+		for col in range(998, 0, -1):
+			pix = img.getpixel((col, row+5))
+			if (abs(pix[0] - 128) > 5) or (abs(pix[1] - 128) > 5) \
+			    or(abs(pix[2] - 128) > 5):
+				break
+
+		#time.sleep(10)
+		#print("Row: {}   Col: {}".format(row, col))
+
+		#find next block
+		find_next(row, col)
+		
+
+		#update list files
+		file = open("list.txt", 'w')
+		for block in knownBlocks:
+			file.write(block)
+			file.write("\n")
+
+		file.write("\n")
+		
+		for block in newBlocks:
+			file.write(block)
+			file.write("\n")
+		file.flush()
+		file.close()
+
+		#sleep just in case
+		time.sleep(2)
+
+		#for now break after 10
+		x = x+1
+		if x > 0:
+			print("Done")
+			break
+
+
+def find_next(row, col):
+	print "running"
+	
+	# get list of files from the list.txt file
+	# files until the first line break are ones already ordered
+	#file = open("list.txt", 'r')
+	#stage = 1
+	#for line in file:
+	#	if line[0] == '\n':
+	#		stage = 2
+	#		continue
+	#	if stage == 1:
+	#		knownBlocks.append(line[0:len(line)-1])	# remove \n from end of name
+	#		print("Known file: {}".format(line[0:len(line)-1]))
+	#	if stage == 2:
+	#		newBlocks.append(line[0:len(line)-1])	# remove \n from end of name
+	#file.close()
 	
 	min = 1000000	# pick a number bigger than possible for now
 	minBlock = None	# nothing for now
@@ -53,7 +135,7 @@ def run():
 		outFile.close()
 		# wait long enough for Microsoft Office to update
 		# could maybe wait shorter? do this for now
-		time.sleep(0.1)
+		time.sleep(0.3)
 		# Take a screenshot and analyze it
 		left = 22	
 		top = 140	# change these if window moves
@@ -70,15 +152,18 @@ def run():
 		top_left_g = 232	
 		top_left_b = 235
 		if img.getpixel((0,0)) != (227, 232, 235):
-			print "{0}: Bad File".format(newBlock)
+			#print "{0}: Bad File".format(newBlock)
 			continue
 		
 		# pixels to compare
 		# hardcode until I find a better way
-		left_col = 783	# column of pixels to compare to column immediately right of it
-		top_row = 32
-		bottom_row = 47
-		
+		# left_col = 783  # column of pixels to compare to column immediately right of it
+		# top_row = 32
+		# bottom_row = 47
+		left_col = col
+		top_row = row
+		bottom_row = top_row+15
+
 		# compare three colunms: the border between old and new, 
 		# 8 pixels left of the border and 16 pixels left of the border
 		difference = 0
@@ -98,10 +183,10 @@ def run():
 			pix6 = img.getpixel((left_col-15, x))
 			difference = difference + abs(pix5[0] - pix6[0]) \
 			     + abs(pix5[1] - pix6[1]) + abs(pix5[2] - pix6[2])
-
+		difference = difference
 		# if it's not the top row, we can compare top border too
 		topDiff = 0
-		if top_row != 0:
+		if 0:#top_row != 0:
 			for x in range(left_col+1, 998):
 				# print("x:{}   (top_row-1):{}".format(x, top_row-1))
 				pixTop = img.getpixel((x, top_row - 1))
@@ -112,12 +197,14 @@ def run():
 					     + abs(pixTop[1] - pixBottom[1]) \
 					     + abs(pixTop[2] - pixBottom[2])
 			# Take the average for the top portion so longer sections don't lose
-			# aka topDiff/x
-			difference = difference + topDiff/x
+			# aka topDiff/x (really needs to be over distance x ranges
+			if (x - (left_col+1)) != 0:
+				topDiff = topDiff/(x - (left_col+1))
+			difference = difference + topDiff
 
-		print("{0}:{1}".format(newBlock, difference))
+		#print("{0}:{1} topDiff:{2}".format(newBlock, difference, topDiff))
 		if difference < min:
-			print "New min: {}".format(difference)
+			#print "New min: {}".format(difference)
 			min = difference
 			minBlock = newBlock
 	
@@ -140,6 +227,9 @@ def run():
 	outFile.flush()
 	outFile.close()
 
+	knownBlocks.append(minBlock)
+	newBlocks.remove(minBlock)
+	return
 
 if __name__ == "__main__":
 	run()
