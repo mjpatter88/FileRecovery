@@ -75,9 +75,9 @@ def run():
 		
 		# pixels to compare
 		# hardcode until I find a better way
-		left_col = 975	# column of pixels to compare to column immediately right of it
-		top_row = 0
-		bottom_row = 15
+		left_col = 655	# column of pixels to compare to column immediately right of it
+		top_row = 16
+		bottom_row = 31
 		
 		# compare three colunms: the border between old and new, 
 		# 8 pixels left of the border and 16 pixels left of the border
@@ -98,6 +98,22 @@ def run():
 			pix6 = img.getpixel((left_col-15, x))
 			difference = difference + abs(pix5[0] - pix6[0]) \
 			     + abs(pix5[1] - pix6[1]) + abs(pix5[2] - pix6[2])
+
+		# if it's not the top row, we can compare top border too
+		topDiff = 0
+		if top_row != 0:
+			for x in range(left_col+1, 998):
+				# print("x:{}   (top_row-1):{}".format(x, top_row-1))
+				pixTop = img.getpixel((x, top_row - 1))
+				pixBottom = img.getpixel((x, top_row))
+				if pixBottom == (128, 128, 128):
+					break	# gray area reached
+				topDiff = topDiff + abs(pixTop[0] - pixBottom[0]) \
+					     + abs(pixTop[1] - pixBottom[1]) \
+					     + abs(pixTop[2] - pixBottom[2])
+			# Take the average for the top portion so longer sections don't lose
+			# aka topDiff/x
+			difference = difference + topDiff/x
 
 		print("{0}:{1}".format(newBlock, difference))
 		if difference < min:
