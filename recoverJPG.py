@@ -47,19 +47,19 @@ def run():
 		time.sleep(1)
 
 		# Take a screenshot and analyze it
-		left = 22	
-		top = 140	# change these if window moves
-		right = 1021
-		bottom = 876
+		left = 21	
+		top = 192	# change these if window moves
+		right = 1020
+		bottom = 928
 		img = ImageGrab.grab((left, top, right, bottom))
 		for row in range(0, 735):
-			pix = img.getpixel((998, row))
+			pix = img.getpixel((993, row))
 			if (abs(pix[0] - 128) < 5) and (abs(pix[1] - 128) < 5) \
 			    and (abs(pix[2] - 128) < 5):
 				break
 
 		# starting at the right edge and moving left
-		for col in range(998, 0, -1):
+		for col in range(990, 0, -1):
 			pix = img.getpixel((col, row+5))
 			if (abs(pix[0] - 128) > 5) or (abs(pix[1] - 128) > 5) \
 			    or(abs(pix[2] - 128) > 15):
@@ -137,10 +137,10 @@ def find_next(row, col):
 		# could maybe wait shorter? do this for now
 		time.sleep(0.3)
 		# Take a screenshot and analyze it
-		left = 22	
-		top = 140	# change these if window moves
-		right = 1021
-		bottom = 876
+		left = 21	
+		top = 192	# change these if window moves
+		right = 1020
+		bottom = 928
 		img = ImageGrab.grab((left, top, right, bottom))
 		# could optimize  more by only grabbing the pixels i'm comparing?
 		# do this if processing becomes an issue
@@ -151,8 +151,9 @@ def find_next(row, col):
 		top_left_r = 227	
 		top_left_g = 232	
 		top_left_b = 235
-		if img.getpixel((0,0)) != (227, 232, 235):
-			print "{0}: Bad File".format(newBlock)
+		pix = img.getpixel((0,0))
+		if pix != (227, 232, 235):
+			print "{}: Bad File. {}{}{}".format(newBlock, pix[0], pix[1], pix[2])
 			continue
 		
 		# pixels to compare
@@ -163,7 +164,7 @@ def find_next(row, col):
 		left_col = col
 		top_row = row
 		bottom_row = top_row+15
-
+		
 		# compare three colunms: the border between old and new, 
 		# 8 pixels left of the border and 16 pixels left of the border
 		difference = 0
@@ -188,7 +189,7 @@ def find_next(row, col):
 		difference = difference
 		# if it's not the top row, we can compare top border too
 		topDiff = 0
-		if top_row != 0:
+		if 0: #top_row != 0:
 			for x in range(left_col+1, 998):
 				# print("x:{}   (top_row-1):{}".format(x, top_row-1))
 				pixTop = img.getpixel((x, top_row - 1))

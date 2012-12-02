@@ -181,3 +181,5 @@ After lots of problems it seems to be working again. Progress is slower than exp
 Bugs keep popping up that take hours to work around. I finally fixed one so maybe it will be the last? It turns out there is a bluish glow around the image so the background pixels change color as the image is neared. This was causing incorrect row or col values, which resulted in wrong calculations.
 
 Fixed, so hopefully things will go more smoothly.
+
+After hours of frustration I found the next block. Turns out it wasn't actually in the list of blocks I was looking for. So now the first thing I'm going to do is recreate a new list for just such a reason.
