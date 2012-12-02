@@ -91,7 +91,7 @@ def run():
 
 		#for now break after 10
 		x = x+1
-		if x > 0:
+		if x > 4:
 			print("Done")
 			break
 
@@ -188,7 +188,7 @@ def find_next(row, col):
 		difference = difference
 		# if it's not the top row, we can compare top border too
 		topDiff = 0
-		if 0: #top_row != 0:
+		if top_row != 0:
 			for x in range(left_col+1, 998):
 				# print("x:{}   (top_row-1):{}".format(x, top_row-1))
 				pixTop = img.getpixel((x, top_row - 1))
