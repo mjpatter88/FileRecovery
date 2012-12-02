@@ -175,3 +175,9 @@ The only issue I really have is there are still files that don't display correct
 Also, rarely the program will fail due to a "permission denied" error when attempting to open the output file. So far I've been able to fix this by increasing the sleep statement in the main loop, so hopefully that will keep working.
 
 Right now it takes about 4 minutes to identify a block, but it should be all automated and ready to go once I change that loop variable.
+
+After lots of problems it seems to be working again. Progress is slower than expected, but things seem to be back on track. It still seems to require a decent amount of micro management, so we'll see how that goes the next day or so.
+
+Bugs keep popping up that take hours to work around. I finally fixed one so maybe it will be the last? It turns out there is a bluish glow around the image so the background pixels change color as the image is neared. This was causing incorrect row or col values, which resulted in wrong calculations.
+
+Fixed, so hopefully things will go more smoothly.

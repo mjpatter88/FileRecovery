@@ -62,11 +62,11 @@ def run():
 		for col in range(998, 0, -1):
 			pix = img.getpixel((col, row+5))
 			if (abs(pix[0] - 128) > 5) or (abs(pix[1] - 128) > 5) \
-			    or(abs(pix[2] - 128) > 5):
+			    or(abs(pix[2] - 128) > 15):
 				break
 
 		#time.sleep(10)
-		#print("Row: {}   Col: {}".format(row, col))
+		print("Row: {}   Col: {}".format(row, col))
 
 		#find next block
 		find_next(row, col)
@@ -152,7 +152,7 @@ def find_next(row, col):
 		top_left_g = 232	
 		top_left_b = 235
 		if img.getpixel((0,0)) != (227, 232, 235):
-			#print "{0}: Bad File".format(newBlock)
+			print "{0}: Bad File".format(newBlock)
 			continue
 		
 		# pixels to compare
@@ -174,19 +174,21 @@ def find_next(row, col):
 			difference = difference + abs(pix1[0] - pix2[0]) \
 			     + abs(pix1[1] - pix2[1]) + abs(pix1[2] - pix2[2])
 			
-			pix3 = img.getpixel((left_col-8, x))
-			pix4 = img.getpixel((left_col-7, x))
-			difference = difference + abs(pix3[0] - pix4[0]) \
-			     + abs(pix3[1] - pix4[1]) + abs(pix3[2] - pix4[2])
+			if left_col-8 >= 0:
+				pix3 = img.getpixel((left_col-8, x))
+				pix4 = img.getpixel((left_col-7, x))
+				difference = difference + abs(pix3[0] - pix4[0]) \
+				     + abs(pix3[1] - pix4[1]) + abs(pix3[2] - pix4[2])
 
-			pix5 = img.getpixel((left_col-16, x))
-			pix6 = img.getpixel((left_col-15, x))
-			difference = difference + abs(pix5[0] - pix6[0]) \
-			     + abs(pix5[1] - pix6[1]) + abs(pix5[2] - pix6[2])
+			if left_col-16 >= 0:
+				pix5 = img.getpixel((left_col-16, x))
+				pix6 = img.getpixel((left_col-15, x))
+				difference = difference + abs(pix5[0] - pix6[0]) \
+				     + abs(pix5[1] - pix6[1]) + abs(pix5[2] - pix6[2])
 		difference = difference
 		# if it's not the top row, we can compare top border too
 		topDiff = 0
-		if 0:#top_row != 0:
+		if 0: #top_row != 0:
 			for x in range(left_col+1, 998):
 				# print("x:{}   (top_row-1):{}".format(x, top_row-1))
 				pixTop = img.getpixel((x, top_row - 1))
@@ -202,9 +204,9 @@ def find_next(row, col):
 				topDiff = topDiff/(x - (left_col+1))
 			difference = difference + topDiff
 
-		#print("{0}:{1} topDiff:{2}".format(newBlock, difference, topDiff))
+		print("{0}:{1}".format(newBlock, difference))
 		if difference < min:
-			#print "New min: {}".format(difference)
+			print "New min: {}".format(difference)
 			min = difference
 			minBlock = newBlock
 	
