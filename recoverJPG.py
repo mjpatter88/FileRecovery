@@ -47,27 +47,29 @@ def run():
 		time.sleep(1)
 
 		# Take a screenshot and analyze it
-		left = 21	
+		left = 460	
 		top = 192	# change these if window moves
-		right = 1020
+		right = 1459
 		bottom = 928
 		img = ImageGrab.grab((left, top, right, bottom))
 		for row in range(0, 735):
 			pix = img.getpixel((993, row))
-			if (abs(pix[0] - 128) < 5) and (abs(pix[1] - 128) < 5) \
-			    and (abs(pix[2] - 128) < 5):
+			if (abs(pix[0] - 128) < 15) and (abs(pix[1] - 128) < 15) \
+			    and (abs(pix[2] - 128) < 15):
 				break
 
 		# starting at the right edge and moving left
 		for col in range(990, 0, -1):
 			pix = img.getpixel((col, row+5))
-			if (abs(pix[0] - 128) > 5) or (abs(pix[1] - 128) > 5) \
-			    or(abs(pix[2] - 128) > 15):
+			if (abs(pix[0] - 128) > 20) or (abs(pix[1] - 128) > 20) \
+			    or(abs(pix[2] - 128) > 20):
 				break
 
 		#time.sleep(10)
+		#row = 288
+		#col = 639
 		print("Row: {}   Col: {}".format(row, col))
-
+		
 		#find next block
 		find_next(row, col)
 		
@@ -91,7 +93,7 @@ def run():
 
 		#for now break after 10
 		x = x+1
-		if x > 4:
+		if x > 0:
 			print("Done")
 			break
 
@@ -137,9 +139,9 @@ def find_next(row, col):
 		# could maybe wait shorter? do this for now
 		time.sleep(0.3)
 		# Take a screenshot and analyze it
-		left = 21	
+		left = 460	
 		top = 192	# change these if window moves
-		right = 1020
+		right = 1459
 		bottom = 928
 		img = ImageGrab.grab((left, top, right, bottom))
 		# could optimize  more by only grabbing the pixels i'm comparing?
@@ -186,7 +188,7 @@ def find_next(row, col):
 				pix6 = img.getpixel((left_col-15, x))
 				difference = difference + abs(pix5[0] - pix6[0]) \
 				     + abs(pix5[1] - pix6[1]) + abs(pix5[2] - pix6[2])
-		difference = difference
+		difference = difference*2	#weight this more heavily
 		# if it's not the top row, we can compare top border too
 		topDiff = 0
 		if 0: #top_row != 0:

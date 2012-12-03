@@ -65,6 +65,39 @@ blockset/BLOCK0449
 blockset/BLOCK0540
 blockset/BLOCK0358
 blockset/BLOCK0455
+blockset/BLOCK0265
+blockset/BLOCK0112
+blockset/BLOCK0607
+blockset/BLOCK0368
+blockset/BLOCK0028
+blockset/BLOCK0788
+blockset/BLOCK0605
+blockset/BLOCK0289
+blockset/BLOCK0411
+blockset/BLOCK0599
+blockset/BLOCK0536
+blockset/BLOCK0443
+blockset/BLOCK0718
+blockset/BLOCK0419
+blockset/BLOCK0038
+blockset/BLOCK0448
+blockset/BLOCK0666
+blockset/BLOCK0602
+blockset/BLOCK0123
+blockset/BLOCK0529
+blockset/BLOCK0312
+blockset/BLOCK0520
+blockset/BLOCK0052
+blockset/BLOCK0646
+blockset/BLOCK0313
+blockset/BLOCK0207
+blockset/BLOCK0878
+blockset/BLOCK0548
+blockset/BLOCK0667
+blockset/BLOCK0134
+blockset/BLOCK0897
+blockset/BLOCK0570
+blockset/BLOCK0763
 
 ******************************Word File Blocks******************************
 285 blocks
